@@ -1,0 +1,286 @@
+/**
+ * These are the variables used throughout the application. This is where 
+ * overwrites that are not specific to components should be maintained.
+ */
+
+// Override default bootstrap brand colors
+@brand-primary: #163f62;
+@brand-success: #82bc00;
+@brand-info: #839bbc;
+@brand-warning: #ffa400;
+@brand-danger: #dc291e;
+
+@secondary-i1: lighten(@brand-info, 25%);
+
+//** Background color for `<body>`.
+@body-bg: #b1b1b1;
+
+//** Global text color on `<body>`.
+@text-color: #333e48;
+
+@font-size-base: 12px;
+
+// Inverted navbar
+// Reset inverted navbar basics
+@navbar-inverse-color: #fff;
+@navbar-inverse-bg: #333e48;
+
+// Inverted navbar links
+@navbar-inverse-link-color: #b1b1b1;
+@navbar-inverse-link-hover-color: #eee;
+@navbar-inverse-link-active-bg: darken(@navbar-inverse-bg, 5%);
+
+@navbar-height: 50px;
+
+//** Default background color used for all tables.
+@table-bg: @gray-lighter;
+//** Background color used for `.table-striped`.
+@table-bg-accent: #fff;
+//** Background color used for `.table-hover`.
+@table-bg-hover: #f5f5f5;
+@table-bg-active: @table-bg-hover;
+
+@thead-text: @secondary-i1;
+
+//** Border color for table and cell borders.
+@table-border-color: #ddd;
+
+//** Global color for active items (e.g., navs or dropdowns).
+@component-active-color: #fff;
+//** Global background color for active items (e.g., navs or dropdowns).
+@component-active-bg: @brand-primary;
+
+//** Width of the `border` for generating carets that indicator dropdowns.
+@caret-width-base: 4px;
+//** Carets increase slightly in size for larger components.
+@caret-width-large: 5px;
+
+//Body Class
+body {
+  font-size: @font-size-base;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  text-decoration: none;
+}
+
+//Drop-Down Menus
+.dropdown-menu {
+  font-size: @font-size-base;
+  padding: 0;
+  width: 100%;
+  border-top: 0;
+}
+
+.dropdown-menu .divider {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.container-fluid {
+  margin-top: @navbar-height;
+  height: 100%;
+}
+
+.container-fluid > div:first-child {
+  height: 100%;
+}
+
+.navbar-brand {
+  padding: 15px;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.navbar {
+  margin-top: 0px !important;
+  margin-bottom: 0px;
+}
+
+.navbar-nav {
+  width: 86%;
+}
+
+.navbar-nav .logoutBtn {
+  float: right;
+  margin-top: 10px;
+}
+
+.navbar-nav {
+  .dropdown-menu {
+    background-color: @navbar-inverse-link-active-bg;
+    color: @navbar-inverse-color;
+    min-width: 100px;
+    padding: 3px;
+    li, li a {
+      display: block;
+      color: @navbar-inverse-color;
+      padding: 5px 10px;
+      &:hover {
+        color: @navbar-inverse-color;
+        background-color: @navbar-inverse-bg;
+      }
+    }
+  }
+  .dropdown:hover .dropdown-menu {
+    /* Toggle on Hover */
+    display: block;
+    background-color: @navbar-inverse-bg;
+  }
+}
+
+.panelbar-header-selected {
+  background: linear-gradient(@gray-lighter, #ddd);
+  cursor: pointer;
+  font-weight: bold;
+  height: 22px;
+  padding: 3px 0 0 5px;
+
+  div {
+    display: inline-block;
+    width: 10%;
+  }
+  div:last-child {
+    float: right;
+  }
+  + div {
+    margin-top: -20px;
+  }
+}
+
+/*General Styles */
+.btn {
+  font-size: @font-size-base;
+  padding-top: 5px;
+  padding-right: 10px;
+}
+
+.padding-top-30 {
+  padding-top: 30px;
+}
+
+.margin-top-10 {
+  margin-top: 10px
+}
+
+.margin-bottom-25 {
+  margin-bottom: 25px
+}
+
+.displayInlineBlock {
+  display: inline-block;
+}
+
+.displayBlock {
+  display: block;
+}
+
+.whiteSpaceNoWrap {
+  white-space: nowrap;
+}
+
+.textAlignLeft {
+  text-align: left;
+}
+
+.textAlignCenter {
+  text-align: center;
+}
+
+.floatRight {
+  float: right;
+}
+
+.form-control:focus {
+  border-color: @brand-info;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(131, 155, 188, 0.6);
+}
+
+/* menu styling */
+.navbar ul li {
+  font: bold 12px/18px sans-serif;
+  display: inline-block;
+  margin-right: -4px;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+}
+
+.navbar ul li:hover, .navbar ul li:hover a {
+  text-decoration: none;
+}
+
+#home {
+  margin-top: @navbar-height;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+}
+
+.search {
+  display: inline-block;
+  float: right;
+  padding-top: 5px;
+  margin-right: 2px;
+}
+
+//Footer Class
+footer {
+  position: fixed;
+  width: 100%;
+  padding: 4px;
+  bottom: 0;
+  background-color: @navbar-inverse-bg;
+  color: @navbar-inverse-color;
+  text-align: center;
+  z-index: 100;
+}
+
+/*
+ * Validation Styles
+ */
+form .CustomValidationError {
+  position: relative;
+  font-size: .8em;
+  color: #ff0000;
+}
+
+.btn-primary {
+  background: #163f62;
+}
+
+/* UI Grid styles */
+.ui-grid-viewport {
+  background-color: #fff;
+}
+
+.ui-grid {
+  border-width: 0;
+}
+
+.ui-grid-canvas {
+  padding-top: 0;
+}
+
+.ui-grid-top-panel, .ui-grid-header-cell {
+  color: #d6dee9;
+  background-color: @brand-primary;
+  border-bottom: 1px solid @text-color;
+}
+
+.ui-grid-row:nth-child(odd) .ui-grid-cell {
+  background-color: @gray-lighter;
+}
+
+.ui-grid-row:nth-child(even) .ui-grid-cell {
+  background-color: @table-bg-accent;
+}

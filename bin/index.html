@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="project" ng-controller="AppCtrl">
+<head>
+    <title ng-bind="pageTitle"></title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- font awesome from BootstrapCDN -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- compiled CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/project-0.0.1.css"/>
+    
+</head>
+
+<body>
+<div ng-if="userLoggedIn">
+    <div ng-include="'header.tpl.html'"></div>
+</div>
+<!-- Views -->
+<div class="container-fluid">
+    <div ui-view></div>
+</div>
+<div ng-if="userLoggedIn">
+    <div ng-include="'footer.tpl.html'"></div>
+</div>
+<!-- compiled JavaScript -->
+<script type="text/javascript" src="assets/project-0.0.1.js"></script>
+
+</body>
+</html>
