@@ -11,7 +11,111 @@ angular.module('project.home', [
             requireLogin: false
         });
     }])
+    .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$q', 'HomeService',
+        function ($rootScope, $scope, $state, $q, HomeService) {
+            //Bubble Chart
+            var deferred = $q.defer();
+            var bubbleChartPromise = deferred.promise;
+            bubbleChartPromise = HomeService.getDeviceUserComments();
+            bubbleChartPromise
+                .then(function (data) {
+                    if (data) {
+                        //Construct Data for Bubble Chart
+                        var resObj = {};
+                        resObj.name = 'Comments';
+                        var tempArr = [];
+                        angular.forEach(data, function (value, key) {
+                            var tempObj = {};
+                            tempObj.name = value.deviceUserComment.deviceKey;
+                            tempObj.size = value.deviceUserComment.userTalkedCount;
+                            tempArr.push(tempObj);
+                        });
+                        resObj.children = tempArr;
+                        constructConnectionMonitoringChart(resObj);
+                    }
+                },
+                function (error) {
+                    console.log(error);
+                },
+                function (progress) {
+                });
 
-    .controller('HomeCtrl', ["$scope", function HomeController($scope) {
-    }]);
+            var constructConnectionMonitoringChart = function (data) {
+                var diameter = 460,
+                    format = d3.format(",d"),
+                    color = d3.scale.category20c();
+
+                var bubble = d3.layout.pack()
+                    .sort(null)
+                    .size([diameter, diameter])
+                    .padding(1.5);
+
+                var svg = d3.select("body").append("svg")
+                    .attr("width", diameter)
+                    .attr("height", diameter)
+                    .attr("class", "bubble");
+
+                d3.json("data", function (error, root) {
+                    /*if (error) {
+                     throw error;
+                     }*/
+                    root = data;
+                    var node = svg.selectAll(".node")
+                        .data(bubble.nodes(classes(root))
+                            .filter(function (d) {
+                                return !d.children;
+                            }))
+                        .enter().append("g")
+                        .attr("class", "node")
+                        .attr("transform", function (d) {
+                            return "translate(" + d.x + "," + d.y + ")";
+                        });
+
+                    node.append("title")
+                        .text(function (d) {
+                            return d.className + ": " + format(d.value);
+                        });
+
+                    node.append("circle")
+                        .attr("r", function (d) {
+                            return d.r;
+                        })
+                        .style("fill", function (d) {
+                            return color(d.packageName);
+                        });
+
+                    node.append("text")
+                        .attr("dy", ".3em")
+                        .style("text-anchor", "middle")
+                        .text(function (d) {
+                            return d.className.substring(0, d.r / 3);
+                        });
+
+                    node.on("click", function (d) {
+                        alert(d);
+                    });
+                });
+
+                // Returns a flattened hierarchy containing all leaf nodes under the root.
+                function classes(root) {
+                    var classes1 = [];
+
+                    function recurse(name, node) {
+                        if (node.children) {
+                            node.children.forEach(function (child) {
+                                recurse(node.name, child);
+                            });
+                        }
+                        else {
+                            classes1.push({packageName: name, className: node.name, value: node.size});
+                        }
+                    }
+
+                    recurse(null, root);
+                    return {children: classes1};
+                }
+
+                d3.select(self.frameElement).style("height", diameter + "px");
+            };
+        }]);
 

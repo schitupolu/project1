@@ -15,18 +15,13 @@
 </head>
 
 <body>
-<div ng-if="userLoggedIn">
     <div ng-include="'header.tpl.html'"></div>
-</div>
-<!-- Views -->
-<div class="container-fluid">
-    <div ui-view></div>
-</div>
-<div ng-if="userLoggedIn">
-    <div ng-include="'footer.tpl.html'"></div>
-</div>
-<!-- compiled JavaScript -->
-<script type="text/javascript" src="assets/project-0.0.1.js"></script>
-
+    <!-- Views -->
+    <div class="container-fluid">
+        <div ui-view></div>
+    </div>
+    <!-- compiled JavaScript -->
+    <script type="text/javascript" src="assets/project-0.0.1.js"></script>
+    
 </body>
 </html>

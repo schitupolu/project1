@@ -15,60 +15,55 @@
 </head>
 
 <body>
-<div ng-if="userLoggedIn">
     <div ng-include="'header.tpl.html'"></div>
-</div>
-<!-- Views -->
-<div class="container-fluid">
-    <div ui-view></div>
-</div>
-<div ng-if="userLoggedIn">
-    <div ng-include="'footer.tpl.html'"></div>
-</div>
-<!-- compiled JavaScript -->
-<script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
-
-<script type="text/javascript" src="vendor/angular/angular.min.js"></script>
-
-<script type="text/javascript" src="vendor/angular-animate/angular-animate.min.js"></script>
-
-<script type="text/javascript" src="vendor/angular-cookies/angular-cookies.min.js"></script>
-
-<script type="text/javascript" src="vendor/angular-resource/angular-resource.min.js"></script>
-
-<script type="text/javascript" src="vendor/angular-sanitize/angular-sanitize.min.js"></script>
-
-<script type="text/javascript" src="vendor/angular-touch/angular-touch.min.js"></script>
-
-<script type="text/javascript" src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-
-<script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-
-<script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
-
-<script type="text/javascript" src="vendor/angular-ui-grid/ui-grid.min.js"></script>
-
-<script type="text/javascript" src="src/app/app.js"></script>
-
-<script type="text/javascript" src="src/app/home/home.js"></script>
-
-<script type="text/javascript" src="src/app/login/login.js"></script>
-
-<script type="text/javascript" src="src/common/services/AuthService.js"></script>
-
-<script type="text/javascript" src="src/common/services/HomeService.js"></script>
-
-<script type="text/javascript" src="src/common/services/LoginService.js"></script>
-
-<script type="text/javascript" src="src/common/services/PConstants.js"></script>
-
-<script type="text/javascript" src="src/common/services/PRestURIs.js"></script>
-
-<script type="text/javascript" src="src/common/services/PUtils.js"></script>
-
-<script type="text/javascript" src="templates-common.js"></script>
-
-<script type="text/javascript" src="templates-app.js"></script>
-
+    <!-- Views -->
+    <div class="container-fluid">
+        <div ui-view></div>
+    </div>
+    <!-- compiled JavaScript -->
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    
+    <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
+    
+    <script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+    
+    <script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
+    
+    <script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    
+    <script type="text/javascript" src="bower_components/angular-touch/angular-touch.min.js"></script>
+    
+    <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    
+    <script type="text/javascript" src="vendor/charts/d3.js"></script>
+    
+    <script type="text/javascript" src="src/app/app.js"></script>
+    
+    <script type="text/javascript" src="src/app/home/home.js"></script>
+    
+    <script type="text/javascript" src="src/app/login/login.js"></script>
+    
+    <script type="text/javascript" src="src/common/services/AuthService.js"></script>
+    
+    <script type="text/javascript" src="src/common/services/HomeService.js"></script>
+    
+    <script type="text/javascript" src="src/common/services/LoginService.js"></script>
+    
+    <script type="text/javascript" src="src/common/services/PConstants.js"></script>
+    
+    <script type="text/javascript" src="src/common/services/PRestURIs.js"></script>
+    
+    <script type="text/javascript" src="src/common/services/PUtils.js"></script>
+    
+    <script type="text/javascript" src="templates-common.js"></script>
+    
+    <script type="text/javascript" src="templates-app.js"></script>
+    
 </body>
 </html>
