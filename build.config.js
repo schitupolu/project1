@@ -62,20 +62,20 @@ module.exports = {
      */
     vendor_files: {
         js: [
-            'vendor/jquery/dist/jquery.min.js',
-            'vendor/angular/angular.min.js',
-            'vendor/angular-animate/angular-animate.min.js',
-            'vendor/angular-cookies/angular-cookies.min.js',
-            'vendor/angular-resource/angular-resource.min.js',
-            'vendor/angular-sanitize/angular-sanitize.min.js',
-            'vendor/angular-touch/angular-touch.min.js',
-            'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
-            'vendor/bootstrap/dist/js/bootstrap.min.js',
+            'bower_components/jquery/dist/jquery.min.js',
+            'bower_components/angular/angular.min.js',
+            'bower_components/angular-animate/angular-animate.min.js',
+            'bower_components/angular-cookies/angular-cookies.min.js',
+            'bower_components/angular-resource/angular-resource.min.js',
+            'bower_components/angular-sanitize/angular-sanitize.min.js',
+            'bower_components/angular-touch/angular-touch.min.js',
+            'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+            'bower_components/bootstrap/dist/js/bootstrap.min.js',
             //ui-router
-            'vendor/angular-ui-router/release/angular-ui-router.js',
-            'vendor/angular-ui-utils/modules/route/route.js',
-            //ui-grid
-            'vendor/angular-ui-grid/ui-grid.min.js'
+            'bower_components/angular-ui-router/release/angular-ui-router.js',
+            'bower_components/angular-ui-utils/modules/route/route.js',
+            // Charts
+            'vendor/charts/d3.js'
         ],
         css: [],
         assets: []
