@@ -11,8 +11,8 @@ angular.module('project.home', [
             requireLogin: false
         });
     })
-    .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$q', 'HomeService', 'P_ConstantsService',
-        function ($rootScope, $scope, $state, $q, HomeService, P_ConstantsService) {
+    .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$q', 'HomeService', 'P_ConstantsService', 'P_UtilsService',
+        function ($rootScope, $scope, $state, $q, HomeService, P_ConstantsService, P_UtilsService) {
             //Bubble Chart
             var deferred = $q.defer();
             var bubbleChartPromise = deferred.promise;
@@ -20,18 +20,20 @@ angular.module('project.home', [
             bubbleChartPromise
                 .then(function (data) {
                     if (data) {
-                        //Construct Data for Bubble Chart
-                        var resObj = {};
-                        resObj.name = P_ConstantsService.COMMENTS;
-                        var tempArr = [];
-                        angular.forEach(data, function (value, key) {
-                            var tempObj = {};
-                            tempObj.name = value.deviceKey;
-                            tempObj.size = value.userTalkedCount;
-                            tempArr.push(tempObj);
-                        });
-                        resObj.children = tempArr;
-                        constructConnectionMonitoringChart(resObj);
+                        if (!P_UtilsService.isObjectEmpty(data)) {
+                            //Construct Data for Bubble Chart
+                            var resObj = {};
+                            resObj.name = P_ConstantsService.COMMENTS;
+                            var tempArr = [];
+                            angular.forEach(data, function (value, key) {
+                                var tempObj = {};
+                                tempObj.name = value.deviceKey;
+                                tempObj.size = value.userTalkedCount;
+                                tempArr.push(tempObj);
+                            });
+                            resObj.children = tempArr;
+                            constructConnectionMonitoringChart(resObj);
+                        }
                     }
                 },
                 function (error) {
@@ -107,7 +109,7 @@ angular.module('project.home', [
                             });
                         }
                         else {
-                            classes1.push({packageName: name, className: node.name, value: node.size});
+                            classes1.push({packageName: node.size, className: node.name, value: node.size});
                         }
                     }
 
