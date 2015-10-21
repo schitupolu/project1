@@ -11,8 +11,8 @@ angular.module('project.home', [
             requireLogin: false
         });
     }])
-    .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$q', 'HomeService',
-        function ($rootScope, $scope, $state, $q, HomeService) {
+    .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$q', 'HomeService', 'P_ConstantsService',
+        function ($rootScope, $scope, $state, $q, HomeService, P_ConstantsService) {
             //Bubble Chart
             var deferred = $q.defer();
             var bubbleChartPromise = deferred.promise;
@@ -22,12 +22,12 @@ angular.module('project.home', [
                     if (data) {
                         //Construct Data for Bubble Chart
                         var resObj = {};
-                        resObj.name = 'Comments';
+                        resObj.name = P_ConstantsService.COMMENTS;
                         var tempArr = [];
                         angular.forEach(data, function (value, key) {
                             var tempObj = {};
-                            tempObj.name = value.deviceUserComment.deviceKey;
-                            tempObj.size = value.deviceUserComment.userTalkedCount;
+                            tempObj.name = value.deviceKey;
+                            tempObj.size = value.userTalkedCount;
                             tempArr.push(tempObj);
                         });
                         resObj.children = tempArr;

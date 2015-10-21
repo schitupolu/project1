@@ -18,5 +18,8 @@ angular.module('project.pconstants', [])
         UPDATE: 'update',
         CREATED: 'CREATED',
         //Polling Interval
-        POLLING_INTERVAL: 5000
+        POLLING_INTERVAL: 5000,
+        //Dashboard
+        COMMENTS: 'Comments'
+
     });
