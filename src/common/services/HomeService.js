@@ -8,7 +8,7 @@ angular.module('project.homeservice', [
 
             homeFactory.getDeviceUserComments = function () {
                 return $http.get(P_RestURIsService.GET_DeviceUserCommentsURL).then(function (result) {
-                        return result.data;
+                        return result.data.result.deviceUserComment;
                     },
                     function (error) {
                         console.log('Error while fetching device user comments in homeFactory.getCommentsData:' + error);
