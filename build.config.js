@@ -74,10 +74,12 @@ module.exports = {
             //ui-router
             'bower_components/angular-ui-router/release/angular-ui-router.js',
             'bower_components/angular-ui-utils/modules/route/route.js',
+            //Carousel
+            'bower_components/angular-carousel/dist/angular-carousel.min.js',
             // Charts
             'vendor/charts/d3.js'
         ],
         css: [],
         assets: []
-    },
+    }
 };
