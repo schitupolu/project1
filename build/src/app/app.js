@@ -7,6 +7,7 @@ angular.module('project', [
     'ngTouch',
     'ui.router',
     'ui.bootstrap',
+    'angular-carousel',
     'project.pconstants',
     'project.putils',
     'project.presturis',
