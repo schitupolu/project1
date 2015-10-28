@@ -82,6 +82,7 @@ angular.module('project.home', [
                         .attr("r", function (d) {
                             return d.r;
                         })
+                        .attr("cursor", "pointer")
                         .style("fill", function (d) {
                             return color(d.packageName);
                         });
