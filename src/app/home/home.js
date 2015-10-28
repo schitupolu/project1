@@ -52,7 +52,7 @@ angular.module('project.home', [
                     .size([diameter, diameter])
                     .padding(1.5);
 
-                var svg = d3.select("body").append("svg")
+                var svg = d3.select("#bubbles").append("svg")
                     .attr("width", diameter)
                     .attr("height", diameter)
                     .attr("class", "bubble");
@@ -63,7 +63,7 @@ angular.module('project.home', [
                      }*/
                     root = data;
                     var node = svg.selectAll(".node")
-                        .data(bubble.nodes(classes(root))
+                        .data(bubble.nodes(flatten(root))
                             .filter(function (d) {
                                 return !d.children;
                             }))
@@ -89,32 +89,31 @@ angular.module('project.home', [
                     node.append("text")
                         .attr("dy", ".3em")
                         .style("text-anchor", "middle")
+                        .attr("cursor", "pointer")
                         .text(function (d) {
                             return d.className.substring(0, d.r / 3);
                         });
 
                     node.on("click", function (d) {
-                        alert(d);
+                        console.log(d);
                     });
                 });
 
                 // Returns a flattened hierarchy containing all leaf nodes under the root.
-                function classes(root) {
-                    var classes1 = [];
+                function flatten(root) {
+                    var nodes = [];
 
-                    function recurse(name, node) {
+                    function recurse(node) {
                         if (node.children) {
-                            node.children.forEach(function (child) {
-                                recurse(node.name, child);
-                            });
+                            node.children.forEach(recurse);
                         }
                         else {
-                            classes1.push({packageName: node.size, className: node.name, value: node.size});
+                            nodes.push({packageName: node.size, className: node.name, value: node.size});
                         }
                     }
 
-                    recurse(null, root);
-                    return {children: classes1};
+                    recurse(root);
+                    return {children: nodes};
                 }
 
                 d3.select(self.frameElement).style("height", diameter + "px");
