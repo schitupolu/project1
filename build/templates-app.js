@@ -1,4 +1,4 @@
-angular.module('templates-app', ['header.tpl.html', 'home/home.tpl.html', 'login/login.tpl.html']);
+angular.module('templates-app', ['header.tpl.html', 'home/details.tpl.html', 'home/home.tpl.html', 'login/login.tpl.html']);
 
 angular.module("header.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("header.tpl.html",
@@ -18,10 +18,20 @@ angular.module("header.tpl.html", []).run(["$templateCache", function($templateC
     "</div>");
 }]);
 
+angular.module("home/details.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("home/details.tpl.html",
+    "<div id=\"home\">\n" +
+    "    Details Content !!!\n" +
+    "</div>\n" +
+    "");
+}]);
+
 angular.module("home/home.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("home/home.tpl.html",
     "<div id=\"home\">\n" +
     "    <div id=\"bubbles\" class=\"bubbleChart\"></div>\n" +
+    "    <!-- Displays Details Page -->\n" +
+    "    <div ui-view></div>\n" +
     "</div>\n" +
     "");
 }]);
