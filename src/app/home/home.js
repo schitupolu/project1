@@ -1,16 +1,25 @@
 angular.module('project.home', [
-    'ui.router'
+    'ui.router',
+    'project.home.details'
 ])
 
     .config(function config($stateProvider) {
-        $stateProvider.state('home', {
-            url: '/home',
-            controller: 'HomeCtrl',
-            templateUrl: 'home/home.tpl.html',
-            data: {pageTitle: 'Home'},
-            requireLogin: false
-        });
+        $stateProvider
+            .state('home', {
+                url: '/home',
+                controller: 'HomeCtrl',
+                templateUrl: 'home/home.tpl.html',
+                data: {pageTitle: 'Home'},
+                requireLogin: false
+            })
+            .state('home.details', {
+                url: '/details',
+                controller: 'DetailsCtrl',
+                templateUrl: 'home/details.tpl.html',
+                data: {pageTitle: 'Home'}
+            });
     })
+
     .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$q', 'HomeService', 'P_ConstantsService', 'P_UtilsService',
         function ($rootScope, $scope, $state, $q, HomeService, P_ConstantsService, P_UtilsService) {
             //Bubble Chart
@@ -96,7 +105,7 @@ angular.module('project.home', [
                         });
 
                     node.on("click", function (d) {
-                        console.log(d);
+                        $state.go('home.details');
                     });
                 });
 
