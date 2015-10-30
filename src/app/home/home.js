@@ -101,8 +101,8 @@ angular.module('project.home', [
                         });
 
                     node.on("click", function (d) {
-                        $scope.showDetails = true;
-                        $scope.$apply();
+                        //Fetch Details
+                        fetchDetails(d.className);
                     });
                 });
 
@@ -124,6 +124,23 @@ angular.module('project.home', [
                 }
 
                 d3.select(self.frameElement).style("height", diameter + "px");
+            };
+
+            /**
+             * Function to fetch Details for Carousel and Comments
+             */
+            var fetchDetails = function (node) {
+                $scope.showDetails = true;
+                $scope.$apply();
+                bubbleChartPromise
+                    .then(function (data) {
+                        angular.forEach(data, function (value, key) {
+                            if (node === value.deviceKey) {
+                                $scope.carouselItems = value.webAccessCount;
+                                $scope.userComments = value.userComments;
+                            }
+                        });
+                    });
             };
         }]);
 

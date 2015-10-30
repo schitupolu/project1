@@ -4,7 +4,17 @@
     </div>
     <div class="rightPanel">
         <div id="details" ng-if="showDetails">
-            Details Content !!!!
+            <!-- Carousel -->
+            <ul class="carouselContent" rn-carousel rn-carousel-auto-slide rn-carousel-transition="hexagon"
+                class="image">
+                <li ng-repeat="item in carouselItems">
+                    <div class="layer">{{ item.webUrl }}</div>
+                </li>
+            </ul>
+            <!-- Comments -->
+            <li ng-repeat="comment in userComments">
+                <div>{{ comment.comments }}</div>
+            </li>
         </div>
     </div>
 </div>
