@@ -1,6 +1,5 @@
 angular.module('project.home', [
-    'ui.router',
-    'project.home.details'
+    'ui.router'
 ])
 
     .config(function config($stateProvider) {
@@ -11,17 +10,14 @@ angular.module('project.home', [
                 templateUrl: 'home/home.tpl.html',
                 data: {pageTitle: 'Home'},
                 requireLogin: false
-            })
-            .state('home.details', {
-                url: '/details',
-                controller: 'DetailsCtrl',
-                templateUrl: 'home/details.tpl.html',
-                data: {pageTitle: 'Home'}
             });
     })
 
     .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$q', 'HomeService', 'P_ConstantsService', 'P_UtilsService',
         function ($rootScope, $scope, $state, $q, HomeService, P_ConstantsService, P_UtilsService) {
+            //Default Values
+            $scope.showDetails = false;
+
             //Bubble Chart
             var deferred = $q.defer();
             var bubbleChartPromise = deferred.promise;
@@ -105,7 +101,8 @@ angular.module('project.home', [
                         });
 
                     node.on("click", function (d) {
-                        $state.go('home.details');
+                        $scope.showDetails = true;
+                        $scope.$apply();
                     });
                 });
 

@@ -1,5 +1,10 @@
-<div id="home">
-    <div id="bubbles" class="bubbleChart"></div>
-    <!-- Displays Details Page -->
-    <div ui-view></div>
+<div id="home" class="row-fluid">
+    <div class="leftPanel">
+        <div id="bubbles" class="bubbleChart"></div>
+    </div>
+    <div class="rightPanel">
+        <div id="details" ng-if="showDetails">
+            Details Content !!!!
+        </div>
+    </div>
 </div>
