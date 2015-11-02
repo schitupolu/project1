@@ -37,12 +37,29 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "                </li>\n" +
     "            </ul>\n" +
     "            <!-- Comments -->\n" +
-    "            <li ng-repeat=\"comment in userComments\">\n" +
-    "                <div>\n" +
-    "                    <span>{{comment.userName}}</span>\n" +
-    "                    <span>{{comment.comments}}</span>\n" +
+    "            <div style=\"width: 99%;\">\n" +
+    "                <div class=\"panel panel-primary\" style=\"height: 435px; overflow: auto;\">\n" +
+    "                    <div class=\"panel-heading\">\n" +
+    "                        <i class=\"fa fa-comments\"></i>&nbsp; Comments\n" +
+    "                    </div>\n" +
+    "                    <div ng-repeat=\"comment in userComments\">\n" +
+    "                        <ul class=\"chat\">\n" +
+    "                            <li class=\"left clearfix\">\n" +
+    "                                <span class=\"chat-img pull-left\" style=\"margin-left: 2px;\">\n" +
+    "                            <i class=\"fa fa-user\"></i>\n" +
+    "                        </span>\n" +
+    "\n" +
+    "                                <div class=\"chat-body clearfix\">\n" +
+    "                                    <div class=\"header\">\n" +
+    "                                        <strong class=\"primary-font\">{{comment.userName}}</strong>\n" +
+    "                                    </div>\n" +
+    "                                    <p>{{comment.comments}}</p>\n" +
+    "                                </div>\n" +
+    "                            </li>\n" +
+    "                        </ul>\n" +
+    "                    </div>\n" +
     "                </div>\n" +
-    "            </li>\n" +
+    "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "</div>\n" +
