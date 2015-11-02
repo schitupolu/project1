@@ -15,12 +15,29 @@
                 </li>
             </ul>
             <!-- Comments -->
-            <li ng-repeat="comment in userComments">
-                <div>
-                    <span>{{comment.userName}}</span>
-                    <span>{{comment.comments}}</span>
+            <div style="width: 99%;">
+                <div class="panel panel-primary" style="height: 435px; overflow: auto;">
+                    <div class="panel-heading">
+                        <i class="fa fa-comments"></i>&nbsp; Comments
+                    </div>
+                    <div ng-repeat="comment in userComments">
+                        <ul class="chat">
+                            <li class="left clearfix">
+                                <span class="chat-img pull-left" style="margin-left: 2px;">
+                            <i class="fa fa-user"></i>
+                        </span>
+
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <strong class="primary-font">{{comment.userName}}</strong>
+                                    </div>
+                                    <p>{{comment.comments}}</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </li>
+            </div>
         </div>
     </div>
 </div>
