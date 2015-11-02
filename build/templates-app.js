@@ -26,16 +26,22 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "    </div>\n" +
     "    <div class=\"rightPanel\">\n" +
     "        <div id=\"details\" ng-if=\"showDetails\">\n" +
+    "            <span style=\"font-weight: bold;\">{{selectedNode.deviceKey}}</span>\n" +
     "            <!-- Carousel -->\n" +
     "            <ul class=\"carouselContent\" rn-carousel rn-carousel-auto-slide rn-carousel-transition=\"hexagon\"\n" +
     "                class=\"image\">\n" +
     "                <li ng-repeat=\"item in carouselItems\">\n" +
-    "                    <div class=\"layer\">{{ item.webUrl }}</div>\n" +
+    "                    <div class=\"layer\">\n" +
+    "                        <a href=\"{{item.webUrl}}\" target=\"_blank\">{{ item.webUrl }}</a>\n" +
+    "                    </div>\n" +
     "                </li>\n" +
     "            </ul>\n" +
     "            <!-- Comments -->\n" +
     "            <li ng-repeat=\"comment in userComments\">\n" +
-    "                <div>{{ comment.comments }}</div>\n" +
+    "                <div>\n" +
+    "                    <span>{{comment.userName}}</span>\n" +
+    "                    <span>{{comment.comments}}</span>\n" +
+    "                </div>\n" +
     "            </li>\n" +
     "        </div>\n" +
     "    </div>\n" +
