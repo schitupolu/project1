@@ -136,6 +136,7 @@ angular.module('project.home', [
                     .then(function (data) {
                         angular.forEach(data, function (value, key) {
                             if (node === value.deviceKey) {
+                                $scope.selectedNode = value;
                                 $scope.carouselItems = value.webAccessCount;
                                 $scope.userComments = value.userComments;
                             }
