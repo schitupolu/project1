@@ -1,6 +1,6 @@
 angular.module('project.home', [
-    'ui.router'
-])
+        'ui.router'
+    ])
 
     .config(function config($stateProvider) {
         $stateProvider
@@ -24,28 +24,28 @@ angular.module('project.home', [
             bubbleChartPromise = HomeService.getDeviceUserComments();
             bubbleChartPromise
                 .then(function (data) {
-                    if (data) {
-                        if (!P_UtilsService.isObjectEmpty(data)) {
-                            //Construct Data for Bubble Chart
-                            var resObj = {};
-                            resObj.name = P_ConstantsService.COMMENTS;
-                            var tempArr = [];
-                            angular.forEach(data, function (value, key) {
-                                var tempObj = {};
-                                tempObj.name = value.deviceKey;
-                                tempObj.size = value.userTalkedCount;
-                                tempArr.push(tempObj);
-                            });
-                            resObj.children = tempArr;
-                            constructConnectionMonitoringChart(resObj);
+                        if (data) {
+                            if (!P_UtilsService.isObjectEmpty(data)) {
+                                //Construct Data for Bubble Chart
+                                var resObj = {};
+                                resObj.name = P_ConstantsService.COMMENTS;
+                                var tempArr = [];
+                                angular.forEach(data, function (value, key) {
+                                    var tempObj = {};
+                                    tempObj.name = value.deviceKey;
+                                    tempObj.size = value.userTalkedCount;
+                                    tempArr.push(tempObj);
+                                });
+                                resObj.children = tempArr;
+                                constructConnectionMonitoringChart(resObj);
+                            }
                         }
-                    }
-                },
-                function (error) {
-                    console.log(error);
-                },
-                function (progress) {
-                });
+                    },
+                    function (error) {
+                        console.log(error);
+                    },
+                    function (progress) {
+                    });
 
             var constructConnectionMonitoringChart = function (data) {
                 var diameter = 460,
@@ -142,6 +142,11 @@ angular.module('project.home', [
                             }
                         });
                     });
+            };
+
+            $scope.getCarouselView = function (index, item) {
+                angular.element("#carousel_" + index).html('');
+                angular.element("#carousel_" + index).append('<iframe src="http://' + item.webUrl + '"></iframe>');
             };
         }]);
 

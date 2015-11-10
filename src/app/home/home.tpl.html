@@ -9,8 +9,8 @@
             <ul class="carouselContent" rn-carousel rn-carousel-auto-slide rn-carousel-transition="hexagon"
                 class="image">
                 <li ng-repeat="item in carouselItems">
-                    <div class="layer">
-                        <a href="{{item.webUrl}}" target="_blank">{{ item.webUrl }}</a>
+                    <div class="layer" id="carousel_{{$index}}">
+                        <div ng-include src='getCarouselView($index, item)'></div>
                     </div>
                 </li>
             </ul>
