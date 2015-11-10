@@ -31,8 +31,8 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "            <ul class=\"carouselContent\" rn-carousel rn-carousel-auto-slide rn-carousel-transition=\"hexagon\"\n" +
     "                class=\"image\">\n" +
     "                <li ng-repeat=\"item in carouselItems\">\n" +
-    "                    <div class=\"layer\">\n" +
-    "                        <a href=\"{{item.webUrl}}\" target=\"_blank\">{{ item.webUrl }}</a>\n" +
+    "                    <div class=\"layer\" id=\"carousel_{{$index}}\">\n" +
+    "                        <div ng-include src='getCarouselView($index, item)'></div>\n" +
     "                    </div>\n" +
     "                </li>\n" +
     "            </ul>\n" +
