@@ -6,19 +6,21 @@
         <div id="details" ng-if="showDetails">
             <span style="font-weight: bold;">{{selectedNode.deviceKey}}</span>
             <!-- Carousel -->
-            <div class="carousel-height" style="margin-bottom: 5px;">
-                <ul class="carouselContent" rn-carousel rn-carousel-buffered rn-carousel-transition="hexagon"
-                    class="image">
-                    <li ng-repeat="item in carouselItems">
-                        <div class="carousel-height" id="carousel_{{$index}}">
-                            <div ng-include src='getCarouselView($index, item)'></div>
-                        </div>
-                    </li>
-                </ul>
+            <div class="carousel-height">
+                <div class="carousel-inner">
+                    <ul rn-carousel rn-carousel-index="carouselIndex3" rn-carousel-transition="hexagon"
+                        rn-carousel-buffered class="carousel3">
+                        <li ng-repeat="item in carouselItems track by $index">
+                            <div class="carousel-height" id="carousel_{{$index}}">
+                                <div ng-include src='getCarouselView($index, item)'></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <!-- Comments -->
             <div style="width: 99%;">
-                <div class="panel panel-primary" style="height: 435px; overflow: auto;">
+                <div class="panel panel-primary" style="height: 330px; overflow: auto;">
                     <div class="panel-heading">
                         <i class="fa fa-comments"></i>&nbsp; Comments
                     </div>
