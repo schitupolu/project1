@@ -146,7 +146,7 @@ angular.module('project.home', [
 
             $scope.getCarouselView = function (index, item) {
                 angular.element("#carousel_" + index).html('');
-                angular.element("#carousel_" + index).append('<object class="iframe-class" data="http://' + item.webUrl + '" />');
+                angular.element("#carousel_" + index).append('<iframe class="iframe-class" frameborder="0" scrolling=no src="http://' + item.webUrl + '" ></iframe>');
             };
         }]);
 
