@@ -28,14 +28,16 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "        <div id=\"details\" ng-if=\"showDetails\">\n" +
     "            <span style=\"font-weight: bold;\">{{selectedNode.deviceKey}}</span>\n" +
     "            <!-- Carousel -->\n" +
-    "            <ul class=\"carouselContent\" rn-carousel rn-carousel-auto-slide rn-carousel-transition=\"hexagon\"\n" +
-    "                class=\"image\">\n" +
-    "                <li ng-repeat=\"item in carouselItems\">\n" +
-    "                    <div class=\"layer\" id=\"carousel_{{$index}}\">\n" +
-    "                        <div ng-include src='getCarouselView($index, item)'></div>\n" +
-    "                    </div>\n" +
-    "                </li>\n" +
-    "            </ul>\n" +
+    "            <div class=\"carousel-height\" style=\"margin-bottom: 5px;\">\n" +
+    "                <ul class=\"carouselContent\" rn-carousel rn-carousel-buffered rn-carousel-transition=\"hexagon\"\n" +
+    "                    class=\"image\">\n" +
+    "                    <li ng-repeat=\"item in carouselItems\">\n" +
+    "                        <div class=\"carousel-height\" id=\"carousel_{{$index}}\">\n" +
+    "                            <div ng-include src='getCarouselView($index, item)'></div>\n" +
+    "                        </div>\n" +
+    "                    </li>\n" +
+    "                </ul>\n" +
+    "            </div>\n" +
     "            <!-- Comments -->\n" +
     "            <div style=\"width: 99%;\">\n" +
     "                <div class=\"panel panel-primary\" style=\"height: 435px; overflow: auto;\">\n" +
