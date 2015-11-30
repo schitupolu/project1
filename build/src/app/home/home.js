@@ -48,7 +48,7 @@ angular.module('project.home', [
                     });
 
             var constructConnectionMonitoringChart = function (data) {
-                var diameter = 460,
+                var diameter = 375,
                     format = d3.format(",d"),
                     color = d3.scale.category20c();
 

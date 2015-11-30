@@ -41,8 +41,8 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "                </div>\n" +
     "            </div>\n" +
     "            <!-- Comments -->\n" +
-    "            <div style=\"width: 99%;\">\n" +
-    "                <div class=\"panel panel-primary\" style=\"height: 330px; overflow: auto;\">\n" +
+    "            <div id=\"comments\">\n" +
+    "                <div class=\"panel panel-primary\">\n" +
     "                    <div class=\"panel-heading\">\n" +
     "                        <i class=\"fa fa-comments\"></i>&nbsp; Comments\n" +
     "                    </div>\n" +
