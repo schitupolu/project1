@@ -27,17 +27,20 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "    <div class=\"rightPanel\">\n" +
     "        <div id=\"details\" ng-if=\"showDetails\">\n" +
     "            <span style=\"font-weight: bold;\">{{selectedNode.deviceKey}}</span>\n" +
-    "            <!-- Carousel -->\n" +
-    "            <div class=\"carousel-height\">\n" +
-    "                <div class=\"carousel-inner\">\n" +
-    "                    <ul rn-carousel rn-carousel-index=\"carouselIndex3\" rn-carousel-transition=\"hexagon\"\n" +
-    "                        rn-carousel-buffered class=\"carousel3\">\n" +
-    "                        <li ng-repeat=\"item in carouselItems track by $index\">\n" +
-    "                            <div class=\"carousel-height\" id=\"carousel_{{$index}}\">\n" +
-    "                                <div ng-include src='getCarouselView($index, item)'></div>\n" +
-    "                            </div>\n" +
-    "                        </li>\n" +
-    "                    </ul>\n" +
+    "            <!-- Web URLs -->\n" +
+    "            <div id=\"weburl\">\n" +
+    "                <div class=\"panel panel-primary\">\n" +
+    "                    <div class=\"panel-heading\">\n" +
+    "                        <i class=\"fa fa-tasks\"></i>&nbsp; URLs\n" +
+    "                    </div>\n" +
+    "                    <div ng-repeat=\"url in webAccess\">\n" +
+    "                        <div class=\"rank\">\n" +
+    "                            <a ng-href=\"{{url.webUrl}}\" target=\"_blank\">Rank {{$index}}</a>\n" +
+    "                        </div>\n" +
+    "                        <div class=\"recommended\">\n" +
+    "                            <i class=\"fa fa-users\"></i> Recommended: {{url.webUrlCount}}\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "            <!-- Comments -->\n" +
@@ -50,8 +53,8 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "                        <ul class=\"chat\">\n" +
     "                            <li class=\"left clearfix\">\n" +
     "                                <span class=\"chat-img pull-left\" style=\"margin-left: 2px;\">\n" +
-    "                            <i class=\"fa fa-user\"></i>\n" +
-    "                        </span>\n" +
+    "                                    <i class=\"fa fa-user\"></i>\n" +
+    "                                </span>\n" +
     "\n" +
     "                                <div class=\"chat-body clearfix\">\n" +
     "                                    <div class=\"header\">\n" +

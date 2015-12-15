@@ -17,6 +17,7 @@ angular.module('project.pconstants', [])
         VIEW: 'view',
         UPDATE: 'update',
         CREATED: 'CREATED',
+        HTTP: 'http',
         //Polling Interval
         POLLING_INTERVAL: 5000,
         //Dashboard

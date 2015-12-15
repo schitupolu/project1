@@ -137,7 +137,7 @@ angular.module('project.home', [
                         angular.forEach(data, function (value, key) {
                             if (node === value.deviceKey) {
                                 $scope.selectedNode = value;
-                                $scope.carouselItems = value.webAccessCount;
+                                $scope.webAccess = value.webAccessCount;
                                 $scope.userComments = value.userComments;
                             }
                         });
@@ -146,7 +146,11 @@ angular.module('project.home', [
 
             $scope.getCarouselView = function (index, item) {
                 angular.element("#carousel_" + index).html('');
-                angular.element("#carousel_" + index).append('<iframe class="iframe-class" frameborder="0" scrolling=no src="http://' + item.webUrl + '" ></iframe>');
+                if (item.webUrl.indexOf(P_ConstantsService.HTTP) > -1) {
+                    angular.element("#carousel_" + index).append('<iframe class="iframe-class" frameborder="0" scrolling=no src="' + item.webUrl + '" ></iframe>');
+                } else {
+                    angular.element("#carousel_" + index).append('<iframe class="iframe-class" frameborder="0" scrolling=no src="http://' + item.webUrl + '" ></iframe>');
+                }
             };
         }]);
 
