@@ -1,22 +1,23 @@
 angular.module('project', [
-    'templates-app',
-    'templates-common',
-    'ngAnimate',
-    'ngSanitize',
-    'ngCookies',
-    'ngTouch',
-    'ui.router',
-    'ui.bootstrap',
-    'angular-carousel',
-    'project.pconstants',
-    'project.putils',
-    'project.presturis',
-    'project.authservice',
-    'project.loginservice',
-    'project.homeservice',
-    'project.login',
-    'project.home'
-])
+        'templates-app',
+        'templates-common',
+        'ngAnimate',
+        'ngSanitize',
+        'ngCookies',
+        'ngTouch',
+        'ui.router',
+        'ui.bootstrap',
+        'angular-carousel',
+        'ngDialog',
+        'project.pconstants',
+        'project.putils',
+        'project.presturis',
+        'project.authservice',
+        'project.loginservice',
+        'project.homeservice',
+        'project.login',
+        'project.home'
+    ])
 
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
         function ($stateProvider, $urlRouterProvider, $locationProvider) {
