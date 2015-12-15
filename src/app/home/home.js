@@ -137,7 +137,7 @@ angular.module('project.home', [
                         angular.forEach(data, function (value, key) {
                             if (node === value.deviceKey) {
                                 $scope.selectedNode = value;
-                                $scope.carouselItems = value.webAccessCount;
+                                $scope.webAccess = value.webAccessCount;
                                 $scope.userComments = value.userComments;
                             }
                         });

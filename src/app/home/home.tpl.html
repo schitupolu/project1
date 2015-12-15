@@ -5,17 +5,20 @@
     <div class="rightPanel">
         <div id="details" ng-if="showDetails">
             <span style="font-weight: bold;">{{selectedNode.deviceKey}}</span>
-            <!-- Carousel -->
-            <div class="carousel-height">
-                <div class="carousel-inner">
-                    <ul rn-carousel rn-carousel-index="carouselIndex3" rn-carousel-transition="hexagon"
-                        rn-carousel-buffered class="carousel3">
-                        <li ng-repeat="item in carouselItems track by $index">
-                            <div class="carousel-height" id="carousel_{{$index}}">
-                                <div ng-include src='getCarouselView($index, item)'></div>
-                            </div>
-                        </li>
-                    </ul>
+            <!-- Web URLs -->
+            <div id="weburl">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <i class="fa fa-tasks"></i>&nbsp; URLs
+                    </div>
+                    <div ng-repeat="url in webAccess">
+                        <div class="rank">
+                            <a ng-href="{{url.webUrl}}" target="_blank">Rank {{$index}}</a>
+                        </div>
+                        <div class="recommended">
+                            <i class="fa fa-users"></i> Recommended: {{url.webUrlCount}}
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- Comments -->
@@ -28,8 +31,8 @@
                         <ul class="chat">
                             <li class="left clearfix">
                                 <span class="chat-img pull-left" style="margin-left: 2px;">
-                            <i class="fa fa-user"></i>
-                        </span>
+                                    <i class="fa fa-user"></i>
+                                </span>
 
                                 <div class="chat-body clearfix">
                                     <div class="header">
