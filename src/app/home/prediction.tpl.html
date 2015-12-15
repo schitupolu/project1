@@ -1,0 +1,26 @@
+<div class="dialog-header">Predict Information</div>
+<div class="ngdialog-message" style="height: 100px;">
+    <form class="form-horizontal group" name="predictionForm" novalidate>
+        <!-- Device Key -->
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Device Key</label>
+
+            <div class="col-sm-8">
+                <input type="text" class="form-control" ng-model="prediction.device" name="device" id="device"
+                       placeholder="Device Key">
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="ngdialog-buttons col-sm-11">
+            <button type="button" class="primary"
+                    ng-click="savePrediction()"
+                    ng-disabled="predictionForm.$invalid">
+                Save
+            </button>
+            <button type="button" class="default"
+                    ng-click="closeThisDialog('button')">Cancel
+            </button>
+        </div>
+    </form>
+</div>

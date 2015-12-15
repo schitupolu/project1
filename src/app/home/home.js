@@ -13,8 +13,8 @@ angular.module('project.home', [
             });
     })
 
-    .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$q', 'HomeService', 'P_ConstantsService', 'P_UtilsService',
-        function ($rootScope, $scope, $state, $q, HomeService, P_ConstantsService, P_UtilsService) {
+    .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$q', 'HomeService', 'P_ConstantsService', 'P_UtilsService', 'ngDialog',
+        function ($rootScope, $scope, $state, $q, HomeService, P_ConstantsService, P_UtilsService, ngDialog) {
             //Default Values
             $scope.showDetails = false;
 
@@ -151,6 +151,28 @@ angular.module('project.home', [
                 } else {
                     angular.element("#carousel_" + index).append('<iframe class="iframe-class" frameborder="0" scrolling=no src="http://' + item.webUrl + '" ></iframe>');
                 }
+            };
+
+            /**
+             * Function to invoke ngDialog
+             */
+            $scope.openPrediction = function () {
+                $scope.prediction = {};
+                ngDialog.open({
+                    showClose: false,
+                    closeByDocument: false,
+                    closeByEscape: true,
+                    scope: $scope,
+                    template: 'home/prediction.tpl.html',
+                    className: 'ngdialog-theme-default'
+                });
+            };
+
+            /**
+             * Function invoke when click on 'Save Prediction'
+             */
+            $scope.savePrediction = function () {
+                console.log($scope.prediction);
             };
         }]);
 

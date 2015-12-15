@@ -284,3 +284,40 @@ form .CustomValidationError {
 .ui-grid-row:nth-child(even) .ui-grid-cell {
   background-color: @table-bg-accent;
 }
+
+/* Dialogs */
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+  background: @table-bg;
+  border: 1px solid @gray-light;
+  padding: 0;
+  width: 60%;
+  .ngdialog-message {
+    padding: 1em;
+    margin-top: .5em;
+  }
+  .ngdialog-buttons {
+    text-align: right;
+    padding-left: 0;
+    padding-right: 0;
+    .btn-default:hover, .btn-default:focus, .btn-default:active {
+      background-color: #ddd;
+    }
+    .btn-primary {
+      margin-right: 3px;
+    }
+  }
+}
+
+.dialog-header {
+  background: linear-gradient(@gray-lighter, #ddd);
+  border-radius: 5px 5px 0 0;
+  line-height: 1.5em;
+  font-size: 1.2em;
+  padding: .2em .75em;
+}
+
+.delete-dialog {
+  .ngdialog-buttons {
+    margin-right: 1.5em;
+  }
+}
