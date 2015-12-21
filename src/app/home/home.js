@@ -32,8 +32,8 @@ angular.module('project.home', [
                                 var tempArr = [];
                                 angular.forEach(data, function (value, key) {
                                     var tempObj = {};
-                                    tempObj.name = value.deviceKey;
-                                    tempObj.size = value.userTalkedCount;
+                                    tempObj.name = value.entityKey;
+                                    tempObj.size = value.entityCurrentVal;
                                     tempArr.push(tempObj);
                                 });
                                 resObj.children = tempArr;
@@ -135,7 +135,7 @@ angular.module('project.home', [
                 bubbleChartPromise
                     .then(function (data) {
                         angular.forEach(data, function (value, key) {
-                            if (node === value.deviceKey) {
+                            if (node === value.entityKey) {
                                 $scope.selectedNode = value;
                                 $scope.webAccess = value.webAccessCount;
                                 $scope.userComments = value.userComments;
@@ -172,7 +172,22 @@ angular.module('project.home', [
              * Function invoke when click on 'Save Prediction'
              */
             $scope.savePrediction = function () {
-                console.log($scope.prediction);
+                var dataObj = {};
+                dataObj.entityKey = $scope.prediction.entity;
+                dataObj.entitycurrentvalue = $scope.prediction.entityvalue;
+                dataObj.entityuservalue = $scope.prediction.entityuservalue;
+                dataObj.hyperlink1 = $scope.prediction.hyperlink1;
+                dataObj.hyperlink2 = $scope.prediction.hyperlink2;
+                dataObj.username = $scope.prediction.username;
+                dataObj.comments = $scope.prediction.comments;
+                console.log("DataObj ::" + dataObj);
+                HomeService.addEntityInformation(dataObj).then(function (data) {
+                    if (data.message.toLowerCase() === P_ConstantsService.SUCCESS) {
+                        ngDialog.close();
+                    } else {
+                        console.log("Error while adding entity values by the user !!");
+                    }
+                });
             };
         }]);
 
