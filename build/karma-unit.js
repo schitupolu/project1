@@ -32,7 +32,6 @@ module.exports = function(config) {
       'bower_components/bootstrap/dist/js/bootstrap.min.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-carousel/dist/angular-carousel.min.js',
-      'bower_components/ng-dialog/js/ngDialog.min.js',
       'vendor/charts/d3.js',
       'build/templates-app.js',
       'build/templates-common.js',

@@ -8,7 +8,6 @@ angular.module('project', [
         'ui.router',
         'ui.bootstrap',
         'angular-carousel',
-        'ngDialog',
         'project.pconstants',
         'project.putils',
         'project.presturis',
