@@ -13,10 +13,12 @@ angular.module('project.home', [
             });
     })
 
-    .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$q', 'HomeService', 'P_ConstantsService', 'P_UtilsService', 'ngDialog',
-        function ($rootScope, $scope, $state, $q, HomeService, P_ConstantsService, P_UtilsService, ngDialog) {
+    .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$q', 'HomeService', 'P_ConstantsService', 'P_UtilsService',
+        function ($rootScope, $scope, $state, $q, HomeService, P_ConstantsService, P_UtilsService) {
             //Default Values
             $scope.showDetails = false;
+            $scope.prediction = {};
+            $scope.prediction.search = '';
 
             //Bubble Chart
             var deferred = $q.defer();
@@ -154,22 +156,7 @@ angular.module('project.home', [
             };
 
             /**
-             * Function to invoke ngDialog
-             */
-            $scope.openPrediction = function () {
-                $scope.prediction = {};
-                ngDialog.open({
-                    showClose: false,
-                    closeByDocument: false,
-                    closeByEscape: true,
-                    scope: $scope,
-                    template: 'home/prediction.tpl.html',
-                    className: 'ngdialog-theme-default'
-                });
-            };
-
-            /**
-             * Function invoke when click on 'Save Prediction'
+             * Function invoked when click on 'Save Prediction'
              */
             $scope.savePrediction = function () {
                 var dataObj = {};
@@ -183,7 +170,7 @@ angular.module('project.home', [
                 console.log("DataObj ::" + dataObj);
                 HomeService.addEntityInformation(dataObj).then(function (data) {
                     if (data.message.toLowerCase() === P_ConstantsService.SUCCESS) {
-                        ngDialog.close();
+                        console.log("success !!");
                     } else {
                         console.log("Error while adding entity values by the user !!");
                     }
