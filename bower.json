@@ -12,8 +12,7 @@
     "bootstrap": "~3.1",
     "angular-bootstrap": "~0.12.0",
     "angular-ui-router": "~0.2",
-    "angular-carousel": "",
-    "ng-dialog": ""
+    "angular-carousel": ""
   },
   "dependencies": {}
 }

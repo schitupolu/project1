@@ -76,8 +76,6 @@ module.exports = {
             'bower_components/angular-ui-utils/modules/route/route.js',
             //Carousel
             'bower_components/angular-carousel/dist/angular-carousel.min.js',
-            //Dialog
-            'bower_components/ng-dialog/js/ngDialog.min.js',
             // Charts
             'vendor/charts/d3.js'
         ],
