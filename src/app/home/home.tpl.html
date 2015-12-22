@@ -1,8 +1,14 @@
 <div id="home" class="row-fluid">
     <div class="leftPanel">
         <!-- Search -->
-        <div class="entitySearchClass">
-            <input type="text" ng-model="prediction.search" placeholder="Search..."/>
+        <div id="search">
+            <div class="input-group col-md-12">
+                <label for="search-input">
+                    <i class="fa fa-search"></i>
+                </label>
+                <input id="search-input" type="text" class="search-query form-control" ng-model="prediction.search"
+                       placeholder="Search..."/>
+            </div>
         </div>
         <!-- Prediction Form -->
         <form class="form-horizontal group" name="predictionForm" novalidate ng-if="prediction.search !== ''">
