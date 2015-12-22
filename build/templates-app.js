@@ -23,8 +23,14 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "<div id=\"home\" class=\"row-fluid\">\n" +
     "    <div class=\"leftPanel\">\n" +
     "        <!-- Search -->\n" +
-    "        <div class=\"entitySearchClass\">\n" +
-    "            <input type=\"text\" ng-model=\"prediction.search\" placeholder=\"Search...\"/>\n" +
+    "        <div id=\"search\">\n" +
+    "            <div class=\"input-group col-md-12\">\n" +
+    "                <label for=\"search-input\">\n" +
+    "                    <i class=\"fa fa-search\"></i>\n" +
+    "                </label>\n" +
+    "                <input id=\"search-input\" type=\"text\" class=\"search-query form-control\" ng-model=\"prediction.search\"\n" +
+    "                       placeholder=\"Search...\"/>\n" +
+    "            </div>\n" +
     "        </div>\n" +
     "        <!-- Prediction Form -->\n" +
     "        <form class=\"form-horizontal group\" name=\"predictionForm\" novalidate ng-if=\"prediction.search !== ''\">\n" +
