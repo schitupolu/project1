@@ -23,7 +23,7 @@ angular.module('project.home', [
             //Bubble Chart
             var deferred = $q.defer();
             var bubbleChartPromise = deferred.promise;
-            bubbleChartPromise = HomeService.getDeviceUserComments();
+            bubbleChartPromise = HomeService.getEntityInformation();
             bubbleChartPromise
                 .then(function (data) {
                         if (data) {
@@ -156,18 +156,36 @@ angular.module('project.home', [
             };
 
             /**
+             * Search
+             */
+            $scope.stocks = [
+                {name: "Apple", symbol: "AAPL"},
+                {name: "Cisco Systems", symbol: "CSCO"},
+                {name: "Facebook", symbol: "FB"},
+                {name: "Yahoo", symbol: "YHOO"}
+            ];
+
+            $scope.symbolSelected = function (selected) {
+                if (selected) {
+                    $scope.prediction.search = selected.originalObject.symbol;
+                    $scope.prediction.entityKey = selected.originalObject.symbol;
+                } else {
+                    $scope.prediction.search = '';
+                }
+            };
+
+            /**
              * Function invoked when click on 'Save Prediction'
              */
             $scope.savePrediction = function () {
                 var dataObj = {};
-                dataObj.entityKey = $scope.prediction.entity;
-                dataObj.entitycurrentvalue = $scope.prediction.entityvalue;
-                dataObj.entityuservalue = $scope.prediction.entityuservalue;
+                dataObj.entityKey = $scope.prediction.entityKey;
+                dataObj.entityCurrentVal = $scope.prediction.entityCurrentVal;
+                dataObj.entityUserVal = $scope.prediction.entityUserVal;
                 dataObj.hyperlink1 = $scope.prediction.hyperlink1;
                 dataObj.hyperlink2 = $scope.prediction.hyperlink2;
-                dataObj.username = $scope.prediction.username;
+                dataObj.userName = $scope.prediction.userName;
                 dataObj.comments = $scope.prediction.comments;
-                console.log("DataObj ::" + dataObj);
                 HomeService.addEntityInformation(dataObj).then(function (data) {
                     if (data.message.toLowerCase() === P_ConstantsService.SUCCESS) {
                         console.log("success !!");

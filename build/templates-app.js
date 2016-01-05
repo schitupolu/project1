@@ -24,23 +24,25 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "    <div class=\"leftPanel\">\n" +
     "        <!-- Search -->\n" +
     "        <div id=\"search\">\n" +
-    "            <div class=\"input-group col-md-12\">\n" +
-    "                <label for=\"search-input\">\n" +
-    "                    <i class=\"fa fa-search\"></i>\n" +
-    "                </label>\n" +
-    "                <input id=\"search-input\" type=\"text\" class=\"search-query form-control\" ng-model=\"prediction.search\"\n" +
-    "                       placeholder=\"Search...\"/>\n" +
-    "            </div>\n" +
+    "            <angucomplete-alt id=\"predictionSearch\"\n" +
+    "                              placeholder=\"Search...\"\n" +
+    "                              pause=\"100\"\n" +
+    "                              selected-object=\"symbolSelected\"\n" +
+    "                              local-data=\"stocks\"\n" +
+    "                              search-fields=\"name,symbol\"\n" +
+    "                              title-field=\"name\"\n" +
+    "                              minlength=\"1\"\n" +
+    "                              input-class=\"search-query form-control\"/>\n" +
     "        </div>\n" +
     "        <!-- Prediction Form -->\n" +
-    "        <form class=\"form-horizontal group\" name=\"predictionForm\" novalidate ng-if=\"prediction.search !== ''\">\n" +
+    "        <form class=\"form-horizontal prediction\" name=\"predictionForm\" novalidate ng-if=\"prediction.search !== ''\">\n" +
     "            <!-- Entity Key -->\n" +
     "            <div class=\"form-group\">\n" +
     "                <label class=\"col-sm-3 control-label\">Key</label>\n" +
     "\n" +
     "                <div class=\"col-sm-8\">\n" +
-    "                    <input type=\"text\" class=\"form-control\" ng-model=\"prediction.entity\" name=\"entity\" id=\"entity\"\n" +
-    "                           placeholder=\"Entity Key\">\n" +
+    "                    <input type=\"text\" class=\"form-control\" ng-model=\"prediction.entityKey\" name=\"entity\" id=\"entity\"\n" +
+    "                           placeholder=\"Entity Key\" disabled>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "            <!-- Entity Current Value -->\n" +
@@ -48,7 +50,7 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "                <label class=\"col-sm-3 control-label\">Current Value</label>\n" +
     "\n" +
     "                <div class=\"col-sm-8\">\n" +
-    "                    <input type=\"text\" class=\"form-control\" ng-model=\"prediction.entityvalue\" name=\"entityvalue\"\n" +
+    "                    <input type=\"text\" class=\"form-control\" ng-model=\"prediction.entityCurrentVal\" name=\"entityvalue\"\n" +
     "                           id=\"entityvalue\" placeholder=\"Entity Current Value\">\n" +
     "                </div>\n" +
     "            </div>\n" +
@@ -57,7 +59,7 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "                <label class=\"col-sm-3 control-label\">User Value</label>\n" +
     "\n" +
     "                <div class=\"col-sm-8\">\n" +
-    "                    <input type=\"text\" class=\"form-control\" ng-model=\"prediction.entityuservalue\" name=\"entityuservalue\"\n" +
+    "                    <input type=\"text\" class=\"form-control\" ng-model=\"prediction.entityUserVal\" name=\"entityuservalue\"\n" +
     "                           id=\"entityuservalue\" placeholder=\"Entity User Value\">\n" +
     "                </div>\n" +
     "            </div>\n" +
@@ -84,7 +86,7 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "                <label class=\"col-sm-3 control-label\">Username</label>\n" +
     "\n" +
     "                <div class=\"col-sm-8\">\n" +
-    "                    <input type=\"text\" class=\"form-control\" ng-model=\"prediction.username\" name=\"username\" id=\"username\"\n" +
+    "                    <input type=\"text\" class=\"form-control\" ng-model=\"prediction.userName\" name=\"username\" id=\"username\"\n" +
     "                           placeholder=\"Username\">\n" +
     "                </div>\n" +
     "            </div>\n" +
@@ -98,17 +100,13 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "                           placeholder=\"Comments\">\n" +
     "                </div>\n" +
     "            </div>\n" +
-    "\n" +
     "            <!-- Buttons -->\n" +
     "            <div class=\"ngdialog-buttons col-sm-11\">\n" +
-    "                <button type=\"button\" class=\"primary\"\n" +
-    "                        ng-click=\"savePrediction()\"\n" +
+    "                <button type=\"button\" class=\"primary\" ng-click=\"savePrediction('save')\"\n" +
     "                        ng-disabled=\"predictionForm.$invalid\">\n" +
     "                    Save\n" +
     "                </button>\n" +
-    "                <button type=\"button\" class=\"default\"\n" +
-    "                        ng-click=\"closeThisDialog('button')\">Cancel\n" +
-    "                </button>\n" +
+    "                <button type=\"button\" class=\"default\" ng-click=\"savePrediction('cancel')\">Cancel</button>\n" +
     "            </div>\n" +
     "        </form>\n" +
     "        <!-- Bubble Chart -->\n" +

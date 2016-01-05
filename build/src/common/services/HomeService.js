@@ -6,16 +6,16 @@ angular.module('project.homeservice', [
         function ($rootScope, $http, P_RestURIsService, P_ConstantsService) {
             var homeFactory = {};
 
-            homeFactory.getDeviceUserComments = function () {
-                return $http.get(P_RestURIsService.GET_DeviceUserCommentsURL).then(function (result) {
+            homeFactory.getEntityInformation = function () {
+                return $http.get(P_RestURIsService.GET_EntityInformationURL).then(function (result) {
                         return result.data.result.entityUserComment;
                     },
                     function (error) {
                         console.log('Error while fetching device user comments in homeFactory.getCommentsData:' + error);
                     });
             };
-            homeFactory.addDeviceInformation = function (dataObj) {
-                return $http.post(P_RestURIsService.POST_DeviceUserCommentsURL, dataObj).then(function (result) {
+            homeFactory.addEntityInformation = function (dataObj) {
+                return $http.post(P_RestURIsService.POST_EntityInformationURL, dataObj).then(function (result) {
                     return result.data;
                 });
             };
