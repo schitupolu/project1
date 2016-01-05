@@ -2,23 +2,25 @@
     <div class="leftPanel">
         <!-- Search -->
         <div id="search">
-            <div class="input-group col-md-12">
-                <label for="search-input">
-                    <i class="fa fa-search"></i>
-                </label>
-                <input id="search-input" type="text" class="search-query form-control" ng-model="prediction.search"
-                       placeholder="Search..."/>
-            </div>
+            <angucomplete-alt id="predictionSearch"
+                              placeholder="Search..."
+                              pause="100"
+                              selected-object="symbolSelected"
+                              local-data="stocks"
+                              search-fields="name,symbol"
+                              title-field="name"
+                              minlength="1"
+                              input-class="search-query form-control"/>
         </div>
         <!-- Prediction Form -->
-        <form class="form-horizontal group" name="predictionForm" novalidate ng-if="prediction.search !== ''">
+        <form class="form-horizontal prediction" name="predictionForm" novalidate ng-if="prediction.search !== ''">
             <!-- Entity Key -->
             <div class="form-group">
                 <label class="col-sm-3 control-label">Key</label>
 
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" ng-model="prediction.entity" name="entity" id="entity"
-                           placeholder="Entity Key">
+                    <input type="text" class="form-control" ng-model="prediction.entityKey" name="entity" id="entity"
+                           placeholder="Entity Key" disabled>
                 </div>
             </div>
             <!-- Entity Current Value -->
@@ -26,7 +28,7 @@
                 <label class="col-sm-3 control-label">Current Value</label>
 
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" ng-model="prediction.entityvalue" name="entityvalue"
+                    <input type="text" class="form-control" ng-model="prediction.entityCurrentVal" name="entityvalue"
                            id="entityvalue" placeholder="Entity Current Value">
                 </div>
             </div>
@@ -35,7 +37,7 @@
                 <label class="col-sm-3 control-label">User Value</label>
 
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" ng-model="prediction.entityuservalue" name="entityuservalue"
+                    <input type="text" class="form-control" ng-model="prediction.entityUserVal" name="entityuservalue"
                            id="entityuservalue" placeholder="Entity User Value">
                 </div>
             </div>
@@ -62,7 +64,7 @@
                 <label class="col-sm-3 control-label">Username</label>
 
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" ng-model="prediction.username" name="username" id="username"
+                    <input type="text" class="form-control" ng-model="prediction.userName" name="username" id="username"
                            placeholder="Username">
                 </div>
             </div>
@@ -76,17 +78,13 @@
                            placeholder="Comments">
                 </div>
             </div>
-
             <!-- Buttons -->
             <div class="ngdialog-buttons col-sm-11">
-                <button type="button" class="primary"
-                        ng-click="savePrediction()"
+                <button type="button" class="primary" ng-click="savePrediction('save')"
                         ng-disabled="predictionForm.$invalid">
                     Save
                 </button>
-                <button type="button" class="default"
-                        ng-click="closeThisDialog('button')">Cancel
-                </button>
+                <button type="button" class="default" ng-click="savePrediction('cancel')">Cancel</button>
             </div>
         </form>
         <!-- Bubble Chart -->
