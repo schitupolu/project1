@@ -77,7 +77,9 @@ module.exports = {
             //Carousel
             'bower_components/angular-carousel/dist/angular-carousel.min.js',
             // Charts
-            'vendor/charts/d3.js'
+            'vendor/charts/d3.js',
+            //Auto-Complete
+            'bower_components/angucomplete-alt/dist/angucomplete-alt.min.js'
         ],
         css: [],
         assets: []

@@ -8,6 +8,7 @@ angular.module('project', [
         'ui.router',
         'ui.bootstrap',
         'angular-carousel',
+        'angucomplete-alt',
         'project.pconstants',
         'project.putils',
         'project.presturis',
