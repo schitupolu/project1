@@ -16,6 +16,7 @@ angular.module('project.pconstants', [])
         DELETE: 'delete',
         VIEW: 'view',
         UPDATE: 'update',
+        CANCEL: 'cancel',
         CREATED: 'CREATED',
         HTTP: 'http',
         //Polling Interval

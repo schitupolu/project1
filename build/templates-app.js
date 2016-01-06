@@ -102,11 +102,11 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "            </div>\n" +
     "            <!-- Buttons -->\n" +
     "            <div class=\"ngdialog-buttons col-sm-11\">\n" +
-    "                <button type=\"button\" class=\"primary\" ng-click=\"savePrediction('save')\"\n" +
+    "                <button type=\"button\" class=\"btn btn-primary\" ng-click=\"savePrediction('save')\"\n" +
     "                        ng-disabled=\"predictionForm.$invalid\">\n" +
     "                    Save\n" +
     "                </button>\n" +
-    "                <button type=\"button\" class=\"default\" ng-click=\"savePrediction('cancel')\">Cancel</button>\n" +
+    "                <button type=\"button\" class=\"btn btn-default\" ng-click=\"savePrediction('cancel')\">Cancel</button>\n" +
     "            </div>\n" +
     "        </form>\n" +
     "        <!-- Bubble Chart -->\n" +
