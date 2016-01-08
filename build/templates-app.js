@@ -50,7 +50,7 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "                <label class=\"col-sm-3 control-label\">Current Value</label>\n" +
     "\n" +
     "                <div class=\"col-sm-8\">\n" +
-    "                    <input type=\"text\" class=\"form-control\" ng-model=\"prediction.entityCurrentVal\" name=\"entityvalue\"\n" +
+    "                    <input type=\"number\" class=\"form-control\" ng-model=\"prediction.entityCurrentVal\" name=\"entityvalue\"\n" +
     "                           id=\"entityvalue\" placeholder=\"Entity Current Value\">\n" +
     "                </div>\n" +
     "            </div>\n" +
@@ -59,7 +59,7 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "                <label class=\"col-sm-3 control-label\">User Value</label>\n" +
     "\n" +
     "                <div class=\"col-sm-8\">\n" +
-    "                    <input type=\"text\" class=\"form-control\" ng-model=\"prediction.entityUserVal\" name=\"entityuservalue\"\n" +
+    "                    <input type=\"number\" class=\"form-control\" ng-model=\"prediction.entityUserVal\" name=\"entityuservalue\"\n" +
     "                           id=\"entityuservalue\" placeholder=\"Entity User Value\">\n" +
     "                </div>\n" +
     "            </div>\n" +

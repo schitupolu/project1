@@ -179,6 +179,7 @@ angular.module('project.home', [
              */
             $scope.savePrediction = function (action) {
                 if (action.toLowerCase() === P_ConstantsService.SAVE) {
+                    var resultObj = {};
                     var dataObj = {};
                     dataObj.entityKey = $scope.prediction.entityKey;
                     dataObj.entityCurrentVal = $scope.prediction.entityCurrentVal;
@@ -187,7 +188,8 @@ angular.module('project.home', [
                     dataObj.hyperlink2 = $scope.prediction.hyperlink2;
                     dataObj.userName = $scope.prediction.userName;
                     dataObj.comments = $scope.prediction.comments;
-                    HomeService.addEntityInformation(dataObj).then(function (data) {
+                    resultObj.request = dataObj;
+                    HomeService.addEntityInformation(resultObj).then(function (data) {
                         if (data.message.toLowerCase() === P_ConstantsService.SUCCESS) {
                             console.log("success !!");
                         } else {
