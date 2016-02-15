@@ -31,7 +31,6 @@ module.exports = function(config) {
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
       'bower_components/bootstrap/dist/js/bootstrap.min.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
-      'bower_components/angular-carousel/dist/angular-carousel.min.js',
       'vendor/charts/d3.js',
       'bower_components/angucomplete-alt/dist/angucomplete-alt.min.js',
       'build/templates-app.js',

@@ -20,145 +20,80 @@ angular.module("header.tpl.html", []).run(["$templateCache", function($templateC
 
 angular.module("home/home.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("home/home.tpl.html",
-    "<div id=\"home\" class=\"row-fluid\">\n" +
-    "    <div class=\"leftPanel\">\n" +
-    "        <!-- Search -->\n" +
-    "        <div id=\"search\">\n" +
-    "            <angucomplete-alt id=\"predictionSearch\"\n" +
-    "                              placeholder=\"Search...\"\n" +
-    "                              pause=\"100\"\n" +
-    "                              selected-object=\"symbolSelected\"\n" +
-    "                              local-data=\"stocks\"\n" +
-    "                              search-fields=\"name,symbol\"\n" +
-    "                              title-field=\"name\"\n" +
-    "                              minlength=\"1\"\n" +
-    "                              input-class=\"search-query form-control\"/>\n" +
-    "        </div>\n" +
-    "        <!-- Prediction Form -->\n" +
-    "        <form class=\"form-horizontal prediction\" name=\"predictionForm\" novalidate ng-if=\"prediction.search !== ''\">\n" +
-    "            <!-- Entity Key -->\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <label class=\"col-sm-3 control-label\">Key</label>\n" +
-    "\n" +
-    "                <div class=\"col-sm-8\">\n" +
-    "                    <input type=\"text\" class=\"form-control\" ng-model=\"prediction.entityKey\" name=\"entity\" id=\"entity\"\n" +
-    "                           placeholder=\"Entity Key\" disabled>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <!-- Entity Current Value -->\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <label class=\"col-sm-3 control-label\">Current Value</label>\n" +
-    "\n" +
-    "                <div class=\"col-sm-8\">\n" +
-    "                    <input type=\"number\" class=\"form-control\" ng-model=\"prediction.entityCurrentVal\" name=\"entityvalue\"\n" +
-    "                           id=\"entityvalue\" placeholder=\"Entity Current Value\">\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <!-- entity User Value-->\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <label class=\"col-sm-3 control-label\">User Value</label>\n" +
-    "\n" +
-    "                <div class=\"col-sm-8\">\n" +
-    "                    <input type=\"number\" class=\"form-control\" ng-model=\"prediction.entityUserVal\" name=\"entityuservalue\"\n" +
-    "                           id=\"entityuservalue\" placeholder=\"Entity User Value\">\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <!-- Hyperlink 1-->\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <label class=\"col-sm-3 control-label\">Hyperlink 1</label>\n" +
-    "\n" +
-    "                <div class=\"col-sm-8\">\n" +
-    "                    <input type=\"text\" class=\"form-control\" ng-model=\"prediction.hyperlink1\" name=\"hyperlink1\"\n" +
-    "                           id=\"hyperlink1\" placeholder=\"Hyperlink 1\">\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <!-- Hyperlink 2-->\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <label class=\"col-sm-3 control-label\">Hyperlink 2</label>\n" +
-    "\n" +
-    "                <div class=\"col-sm-8\">\n" +
-    "                    <input type=\"text\" class=\"form-control\" ng-model=\"prediction.hyperlink2\" name=\"hyperlink2\"\n" +
-    "                           id=\"hyperlink2\" placeholder=\"Hyperlink 2\">\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <!-- Username-->\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <label class=\"col-sm-3 control-label\">Username</label>\n" +
-    "\n" +
-    "                <div class=\"col-sm-8\">\n" +
-    "                    <input type=\"text\" class=\"form-control\" ng-model=\"prediction.userName\" name=\"username\" id=\"username\"\n" +
-    "                           placeholder=\"Username\">\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <!-- Comments-->\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <label class=\"col-sm-3 control-label\">Comments</label>\n" +
-    "\n" +
-    "                <div class=\"col-sm-8\">\n" +
-    "                    <input type=\"text\" class=\"form-control\" ng-model=\"prediction.comments\" name=\"comments\"\n" +
-    "                           id=\"usrcomments\"\n" +
-    "                           placeholder=\"Comments\">\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <!-- Buttons -->\n" +
-    "            <div class=\"ngdialog-buttons col-sm-11\">\n" +
-    "                <button type=\"button\" class=\"btn btn-primary\" ng-click=\"savePrediction('save')\"\n" +
-    "                        ng-disabled=\"predictionForm.$invalid\">\n" +
-    "                    Save\n" +
-    "                </button>\n" +
-    "                <button type=\"button\" class=\"btn btn-default\" ng-click=\"savePrediction('cancel')\">Cancel</button>\n" +
-    "            </div>\n" +
-    "        </form>\n" +
+    "<div id=\"home\" class=\"section group\">\n" +
+    "    <div class=\"col span_1_of_3\">\n" +
     "        <!-- Bubble Chart -->\n" +
     "        <div id=\"bubbles\" class=\"bubbleChart\"></div>\n" +
     "    </div>\n" +
-    "    <div class=\"rightPanel\">\n" +
-    "        <div id=\"details\" ng-if=\"showDetails\">\n" +
-    "            <span style=\"font-weight: bold;\">{{selectedNode.deviceKey}}</span>\n" +
-    "            <!-- Web URLs -->\n" +
-    "            <div id=\"weburl\">\n" +
-    "                <div class=\"panel panel-primary\">\n" +
-    "                    <div class=\"panel-heading\">\n" +
-    "                        <i class=\"fa fa-tasks\"></i>&nbsp; URLs\n" +
-    "                    </div>\n" +
-    "                    <div ng-repeat=\"url in webAccess\">\n" +
-    "                        <div class=\"rank\">\n" +
-    "                            <a ng-href=\"{{url.webUrl}}\" target=\"_blank\">Rank {{$index}}</a>\n" +
-    "                        </div>\n" +
-    "                        <div class=\"recommended\">\n" +
-    "                            <i class=\"fa fa-users\"></i> Recommended: {{url.webUrlCount}}\n" +
+    "    <div class=\"col span_1_of_3\" ng-if=\"showDetails\">\n" +
+    "        <!-- Top News -->\n" +
+    "        <div class=\"panel panel-primary\">\n" +
+    "            <div class=\"panel-heading\">{{selectedEntity.entityKey}}</div>\n" +
+    "            <div class=\"panel-body\" style=\"height: 225px;\">\n" +
+    "                <div ng-repeat=\"topNews in entityTopNews\">\n" +
+    "                    <div class=\"col-md-6\">\n" +
+    "                        <div class=\"thumbnail tile-bgcolor\">\n" +
+    "                            <p>\n" +
+    "                                <a href=\"{{topNews.newsLink}}\" target=\"_blank\">{{topNews.newsTitle}}</a>\n" +
+    "                            </p>\n" +
+    "\n" +
+    "                            <p>\n" +
+    "                                {{topNews.newsSource}}\n" +
+    "                            </p>\n" +
+    "                            <span><i class=\"fa fa-thumbs-up\"></i>&nbsp;{{topNews.upCount}}</span>\n" +
+    "                            <span><i class=\"fa fa-thumbs-down\"></i>&nbsp;{{topNews.downCount}}</span>\n" +
     "                        </div>\n" +
     "                    </div>\n" +
     "                </div>\n" +
+    "                <!-- More News -->\n" +
+    "                <span class=\"showMoreNews\" ng-click=\"showMoreNews()\">Show More News...</span>\n" +
     "            </div>\n" +
-    "            <!-- Comments -->\n" +
-    "            <div id=\"comments\">\n" +
-    "                <div class=\"panel panel-primary\">\n" +
-    "                    <div class=\"panel-heading\">\n" +
-    "                        <i class=\"fa fa-comments\"></i>&nbsp; Comments\n" +
-    "                    </div>\n" +
-    "                    <div ng-repeat=\"comment in userComments\">\n" +
-    "                        <ul class=\"chat\">\n" +
-    "                            <li class=\"left clearfix\">\n" +
-    "                                <span class=\"chat-img pull-left\" style=\"margin-left: 2px;\">\n" +
-    "                                    <i class=\"fa fa-user\"></i>\n" +
-    "                                </span>\n" +
+    "        </div>\n" +
+    "        <!-- Comments -->\n" +
+    "        <div id=\"comments\" class=\"panel panel-primary\" style=\"height: 300px;\">\n" +
+    "            <div class=\"panel-heading\">\n" +
+    "                <i class=\"fa fa-comments\"></i>&nbsp; Comments\n" +
+    "            </div>\n" +
+    "            <div ng-repeat=\"comment in userComments\">\n" +
+    "                <ul class=\"chat\">\n" +
+    "                    <li class=\"left clearfix\">\n" +
+    "                        <span class=\"chat-img pull-left\" style=\"margin-left: 2px;\">\n" +
+    "                            <i class=\"fa fa-user\"></i>\n" +
+    "                        </span>\n" +
     "\n" +
-    "                                <div class=\"chat-body clearfix\">\n" +
-    "                                    <div class=\"header\">\n" +
-    "                                        <strong class=\"primary-font\">{{comment.userName}}</strong>\n" +
-    "                                    </div>\n" +
-    "                                    <p>{{comment.comments}}</p>\n" +
-    "                                </div>\n" +
-    "                            </li>\n" +
-    "                        </ul>\n" +
+    "                        <div class=\"chat-body clearfix\">\n" +
+    "                            <div class=\"header\">\n" +
+    "                                <strong class=\"primary-font\">{{comment.userName}}</strong>\n" +
+    "                            </div>\n" +
+    "                            <p>{{comment.comments}}</p>\n" +
+    "                        </div>\n" +
+    "                    </li>\n" +
+    "                </ul>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "    <div class=\"col span_1_of_3\" ng-if=\"showDetails\">\n" +
+    "        <!-- News Feed -->\n" +
+    "        <div class=\"panel panel-primary\">\n" +
+    "            <div class=\"panel-heading\">News Feed</div>\n" +
+    "            <div class=\"panel-body\" style=\"height: 525px;\">\n" +
+    "                <div ng-repeat=\"newsFeed in entityNewsFeed\">\n" +
+    "                    <div class=\"col-md-12\">\n" +
+    "                        <div class=\"thumbnail tile-bgcolor\">\n" +
+    "                            <p>\n" +
+    "                                <a href=\"{{newsFeed.newsLink}}\" target=\"_blank\">{{newsFeed.newsTitle}}</a>\n" +
+    "                            </p>\n" +
+    "\n" +
+    "                            <p>\n" +
+    "                                {{newsFeed.newsSource}}\n" +
+    "                            </p>\n" +
+    "                        </div>\n" +
     "                    </div>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
-    "</div>\n" +
-    "");
+    "</div>");
 }]);
 
 angular.module("login/login.tpl.html", []).run(["$templateCache", function($templateCache) {
