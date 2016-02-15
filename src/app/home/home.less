@@ -1,47 +1,89 @@
-.leftPanel {
+/*  SECTIONS  */
+.section {
+  clear: both;
+  padding: 0px;
+  margin: 0px;
+}
+
+/*  COLUMN SETUP  */
+.col {
+  display: block;
+  float: left;
+  margin: 2px 0 1% 0.5%;
+}
+
+.col:first-child {
+  margin-left: 0;
+}
+
+/*  GROUPING  */
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+
+.group:after {
+  clear: both;
+}
+
+.group {
+  zoom: 1; /* For IE 6/7 */
+}
+
+/*  GRID OF THREE  */
+.span_3_of_3 {
+  width: 100%;
+}
+
+.span_2_of_3 {
+  width: 66.5%;
+}
+
+.span_1_of_3 {
+  width: 33%;
+}
+
+/*  GO FULL WIDTH BELOW 480 PIXELS */
+@media only screen and (max-width: 480px) {
+  .col {
+    margin: 1% 0 1% 0%;
+  }
+
+  .span_3_of_3, .span_2_of_3, .span_1_of_3 {
+    width: 100%;
+  }
+}
+
+#home {
+  .marginRight {
+    margin-right: 3px;
+  }
+  .panel {
+    margin-bottom: 0px;
+  }
+
+  .panel-body {
+    padding: 5px;
+    overflow-y: scroll;
+  }
+}
+
+.tile-bgcolor {
+  background-color: rgb(149, 165, 166);
+}
+
+.showMoreNews {
+  width: 100%;
   display: inline-block;
-  width: 30%;
-  height: 100%;
-}
-
-.rightPanel {
-  display: inline-block;
-  width: 70%;
-  height: 100%;
-  float: right;
-}
-
-.bubbleChart {
-  min-width: 50px;
-  max-width: 100px;
-}
-
-.bubble {
-  margin: 10px;
-}
-
-.node:hover circle {
-  fill: #333E48 !important;
-}
-
-.carouselContent {
-  height: 100px;
-  border: 1px solid;
-  width: 25%;
-  text-align: center;
-  background-color: grey;
-}
-
-// Details
-#details {
-  height: 100%;
+  cursor: pointer;
 }
 
 /*
  * Comments
  */
 #comments {
-  padding-right: 1px;
+  margin-top: 2px;
 }
 
 .chat {
@@ -67,94 +109,4 @@
 .chat li .chat-body p {
   margin: 0;
   color: #777777;
-}
-
-.panel-body {
-  overflow-y: scroll;
-  height: 250px;
-}
-
-.panel {
-  margin-bottom: 2px !important;
-  height: 245px;
-  overflow: auto;
-}
-
-.carousel-height {
-  height: 325px;
-  margin-bottom: 1px;
-}
-
-.carouselContent {
-  height: 225px;
-}
-
-.iframe-class {
-  height: 100%;
-  /*position: absolute;
-  z-index: 101;
-  overflow: auto;*/
-  width: 100%;
-}
-
-.bgimage {
-  text-align: right;
-  color: white;
-  background-size: cover;
-  height: 100%;
-  background-position: center center;
-}
-
-ul[rn-carousel] {
-  width: 80%;
-  height: 325px;
-  margin: 0;
-}
-
-.carousel-inner {
-  display: inline-block;
-}
-
-#weburl {
-  padding-right: 1px;
-  padding-top: 3px;
-}
-
-#weburl .panel {
-  height: 250px;
-}
-
-#weburl .rank {
-  margin-left: 17px;
-  font-weight: bold;
-}
-
-#weburl .recommended {
-  margin-left: 2px;
-  border-bottom: 1px dotted #B3A9A9;
-}
-
-/**
- * Search
- */
-#search {
-  position: relative;
-  padding-top: 3px;
-  padding-left: 3px;
-}
-
-#search label {
-  position: absolute;
-  left: 10px;
-  top: 7px;
-  z-index: 3;
-}
-
-#search #search-input {
-  padding-left: 30px;
-  padding-right: 20px;
-}
-
-.prediction {
-  margin-top: 2px;
 }

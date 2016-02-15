@@ -138,21 +138,11 @@ angular.module('project.home', [
                     .then(function (data) {
                         angular.forEach(data, function (value, key) {
                             if (node === value.entityKey) {
-                                $scope.selectedNode = value;
-                                $scope.webAccess = value.webAccessCount;
+                                $scope.selectedEntity = value;
                                 $scope.userComments = value.userComments;
                             }
                         });
                     });
-            };
-
-            $scope.getCarouselView = function (index, item) {
-                angular.element("#carousel_" + index).html('');
-                if (item.webUrl.indexOf(P_ConstantsService.HTTP) > -1) {
-                    angular.element("#carousel_" + index).append('<iframe class="iframe-class" frameborder="0" scrolling=no src="' + item.webUrl + '" ></iframe>');
-                } else {
-                    angular.element("#carousel_" + index).append('<iframe class="iframe-class" frameborder="0" scrolling=no src="http://' + item.webUrl + '" ></iframe>');
-                }
             };
 
             /**
@@ -172,6 +162,27 @@ angular.module('project.home', [
                 } else {
                     $scope.prediction.search = '';
                 }
+            };
+
+            /**
+             * Top News
+             */
+            HomeService.getEntityTopNews().then(function (data) {
+                $scope.entityTopNews = data;
+            });
+
+            /**
+             * News Feed
+             */
+            HomeService.getEntityNewsFeed().then(function (data) {
+                $scope.entityNewsFeed = data;
+            });
+
+            /**
+             * Show More News
+             */
+            $scope.showMoreNews = function () {
+                console.log("Clicked on Show More News !!");
             };
 
             /**
