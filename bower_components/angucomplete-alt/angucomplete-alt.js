@@ -7,9 +7,8 @@
 
 /*! Copyright (c) 2014 Hidenari Nozaki and contributors | Licensed under the MIT license */
 
-'use strict';
-
 (function (root, factory) {
+  'use strict';
   if (typeof module !== 'undefined' && module.exports) {
     // CommonJS
     module.exports = factory(require('angular'));
@@ -21,6 +20,7 @@
     factory(root.angular);
   }
 }(window, function (angular) {
+  'use strict';
 
   angular.module('angucomplete-alt', []).directive('angucompleteAlt', ['$q', '$parse', '$http', '$sce', '$timeout', '$templateCache', '$interpolate', function ($q, $parse, $http, $sce, $timeout, $templateCache, $interpolate) {
     // keyboard events
@@ -46,7 +46,7 @@
     // Set the default template for this directive
     $templateCache.put(TEMPLATE_URL,
         '<div class="angucomplete-holder" ng-class="{\'angucomplete-dropdown-visible\': showDropdown}">' +
-        '  <input id="{{id}}_value" name="{{inputName}}" ng-class="{\'angucomplete-input-not-empty\': notEmpty}" ng-model="searchStr" ng-disabled="disableInput" type="{{inputType}}" placeholder="{{placeholder}}" maxlength="{{maxlength}}" ng-focus="onFocusHandler()" class="{{inputClass}}" ng-focus="resetHideResults()" ng-blur="hideResults($event)" autocapitalize="off" autocorrect="off" autocomplete="off" ng-change="inputChangeHandler(searchStr)"/>' +
+        '  <input id="{{id}}_value" name="{{inputName}}" tabindex="{{fieldTabindex}}" ng-class="{\'angucomplete-input-not-empty\': notEmpty}" ng-model="searchStr" ng-disabled="disableInput" type="{{inputType}}" placeholder="{{placeholder}}" maxlength="{{maxlength}}" ng-focus="onFocusHandler()" class="{{inputClass}}" ng-focus="resetHideResults()" ng-blur="hideResults($event)" autocapitalize="off" autocorrect="off" autocomplete="off" ng-change="inputChangeHandler(searchStr)"/>' +
         '  <div id="{{id}}_dropdown" class="angucomplete-dropdown" ng-show="showDropdown">' +
         '    <div class="angucomplete-searching" ng-show="searching" ng-bind="textSearching"></div>' +
         '    <div class="angucomplete-searching" ng-show="!searching && (!results || results.length == 0)" ng-bind="textNoResults"></div>' +
@@ -530,9 +530,7 @@
             matches[matches.length] = scope.localData[i];
           }
         }
-
-        scope.searching = false;
-        processResults(matches, str);
+        return matches;
       }
 
       function checkExactMatch(result, obj, str){
@@ -553,7 +551,14 @@
         }
         if (scope.localData) {
           scope.$apply(function() {
-            getLocalResults(str);
+            var matches;
+            if (typeof scope.localSearch() !== 'undefined') {
+              matches = scope.localSearch()(str);
+            } else {
+              matches = getLocalResults(str);
+            }
+            scope.searching = false;
+            processResults(matches, str);
           });
         }
         else if (scope.remoteApiHandler) {
@@ -776,6 +781,7 @@
         disableInput: '=',
         initialValue: '=',
         localData: '=',
+        localSearch: '&',
         remoteUrlRequestFormatter: '=',
         remoteUrlRequestWithCredentials: '@',
         remoteUrlResponseFormatter: '=',
@@ -802,6 +808,7 @@
         autoMatch: '@',
         focusOut: '&',
         focusIn: '&',
+        fieldTabindex: '@',
         inputName: '@',
         focusFirst: '@',
         parseInput: '&'
